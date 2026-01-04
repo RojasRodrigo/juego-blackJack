@@ -16,10 +16,35 @@ const crearDeck = () => {
 
     //deck.push(i + tipos)
 
-    deck = _.shuffle(deck) //mezcla la baraja para que salga en orden aleatorio
+    deck = _.shuffle(deck) //mezcla la baraja para que salga en orden aleatorio (libreria externa underscore)
     console.log(deck);
     return deck;
 
 }
-
 crearDeck();
+// funcion pedir carta
+const pedirCarta = () => {
+    if (deck.length === 0) {
+        throw 'Nohay cambio denel deck'
+
+    }
+
+    const carta = deck.pop();
+
+    console.log(deck);
+    console.log(carta)
+    return carta;
+}
+
+// pedirCarta()
+const valorCarta = (carta) => {
+    const valor = carta.substring(0, carta.length - 1);
+
+    return (isNaN(valor)) ?
+        (valor === 'A') ? 11 : 10
+        : valor * 1;
+
+
+}
+const valor = valorCarta(pedirCarta());
+console.log({ valor })
